@@ -2,9 +2,11 @@ package com.naveen.springgraphql.mysql.resolver;
 
 import java.util.Optional;
 
+import org.slf4j.ILoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.naveen.springgraphql.mysql.model.Author;
 import com.naveen.springgraphql.mysql.model.Tutorial;
@@ -17,6 +19,8 @@ import javassist.NotFoundException;
 public class Mutation implements GraphQLMutationResolver {
 	private AuthorRepository authorRepository;
 	private TutorialRepository tutorialRepository;
+	
+	private static final Logger LOG =LoggerFactory.getLogger(Mutation.class);
 
 	@Autowired
 	public Mutation(AuthorRepository authorRepository, TutorialRepository tutorialRepository) {
